@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTOMANIA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #101820;
+            color: #ffffff;
+        }
+        header {
+            background-color: #1e3a8a;
+            padding: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff073a;
+        }
+        #menu {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #menu li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        #menu a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .hero {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1e3a8a;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
+        }
+        .car {
+            text-align: center;
+            margin: 1rem;
+            cursor: pointer;
+        }
+        .car img {
+            width: 200px;
+            height: 150px;
+            border: 3px solid #ff073a;
+            border-radius: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #1e3a8a;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ff073a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-icon" onclick="toggleMenu()">?</div>
+            <ul id="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#autos">Ver Autos</a></li>
+                <li><a href="#info">Informacion</a></li>
+                <li><a href="#">Volver</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Que auto quieres conocer hoy?</h1>
+        </section>
+        <section id="autos" class="gallery">
+            <div class="car" onclick="showCarInfo('Porsche 911', 'Porsche', '1964 (ultima version 2019)', '650 hp (version turbo S)', '$115,000 USD')">
+                <img src="porsche 911.jpg" alt="Porsche 911">
+                <p>Porsche 911</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Maserati MC20', 'Maserati', '2020', '621 hp', '$215,000 USD')">
+                <img src="maserati.jpg" alt="Maserati MC20">
+                <p>Maserati MC20</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Toyota GR Yaris', 'Toyota Gazoo Racing', '2020', '628 hp', '$45,000 USD')">
+                <img src="toyota yaris.jpg" alt="Toyota GR Yaris">
+                <p>Toyota GR Yaris</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Alpine A110', 'Renault', '2017 (Nueva version)', '252 hp', '$60,000 USD')">
+                <img src="alpine.jpg" alt="Alpine A110">
+                <p>Alpine A110</p>
+            </div>
+            <div class="car" onclick="showCarInfo('BMW M4', 'BMW', '2014 (ultima edicion 2020)', '503 hp (version Competition)', '$80,000 USD')">
+                <img src="bmw m4.jpg" alt="BMW M4">
+                <p>BMW M4</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Chevrolet Corvette', 'Chevrolet', '1953 (ultima version C8 2020)', '495 hp (C8 Stringray)', '$65,000 USD')">
+                <img src="chevrolet corvette.jpg" alt="Chevrolet Corvette">
+                <p>Chevrolet Corvette</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Mazda MX-5', 'Mazda', '1989 (ultima version 2016)', '181 hp', '$30,000 USD')">
+                <img src="mazda mx5.jpg" alt="Mazda MX-5">
+                <p>Mazda MX-5</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Ferrari 488 Challenge', 'Ferrari', '2016', '670 hp', '$300,000 USD')">
+                <img src="ferrari 488.jpg" alt="Ferrari 488">
+                <p>Ferrari 488</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Porsche GT3RS', 'Porsche', '2018', '520 hp', '$185,000 USD')">
+                <img src="porsche gt3.jpg" alt="Porsche GT3RS">
+                <p>Porsche GT3RS</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Audi R8 Das Finale', 'Audi', '2019', '602 hp', '$180,000 USD')">
+                <img src="audi r8.jpg" alt="Audi R8 Das Finale">
+                <p>Audi R8 Das Finale</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Lamborghini Aventador', 'Lamborghini', '2011', '690 hp', '$400,000 USD')">
+                <img src="lambo aventador.jpg" alt="Lamborghini Aventador">
+                <p>Lamborghini Aventador</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Mercedes AMG GT Black', 'Mercedes-Benz', '2018', '720 hp', '$150,000 USD')">
+                <img src="mercedes amg gt.jpg" alt="Mercedes AMG GT Black">
+                <p>Mercedes AMG GT Black</p>
+            </div>
+            <div class="car" onclick="showCarInfo('McLaren 765LT', 'McLaren', '2020', '755 hp', '$300,000 USD')">
+                <img src="mclaren 765.jpg" alt="McLaren 765LT">
+                <p>McLaren 765LT</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Lamborghini Huracán', 'Lamborghini', '2014', '610 hp', '$210,000 USD')">
+                <img src="lambo huracan.jpg" alt="Lamborghini Huracán">
+                <p>Lamborghini Huracán</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Corvette Z06', 'Chevrolet', '2001 (ultima edicion C7:2015)', '650 hp', '$80,000 USD')">
+                <img src="corvette z06.jpg" alt="Corvette Z06">
+                <p>Corvette Z06</p>
+            </div>
+            <div class="car" onclick="showCarInfo('McLaren Senna', 'McLaren', '2018', '800 hp', '$1,000,000 USD')">
+                <img src="mclaren senna.jpg" alt="McLaren Senna">
+                <p>McLaren Senna</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Koenigseeg Jesko', 'Koenigsegg', '2020', '1,600 hp', '$3,000,000 USD')">
+                <img src="koe.jpg" alt="Koenigsegg Jesko">
+                <p>Koenigsegg Jesko</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Bugatti Chiron', 'Bugatti', '2016', '1,500 hp', '$3,000,000 USD')">
+                <img src="bugatti chiron.jpg" alt="Bugatti Chiron">
+                <p>Bugatti Chiron</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Bugatti Divo', 'Bugatti', '2018', '1,500 hp', '$5,800,000 USD')">
+                <img src="bugatti divo.jpg" alt="Bugatti Divo">
+                <p>Bugatti Divo</p>
+            </div>
+            <div class="car" onclick="showCarInfo('Bugatti Centodieci', 'Bugatti', '2019', '1,600 hp', '$9,000,000 USD')">
+                <img src="bugatti cento.jpg" alt="Bugatti Centodieci">
+                <p>Bugatti Centodieci</p>
+            </div>
+        </section>
+    </main>
+    <div id="car-info" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="car-name"></h2>
+            <p><strong>Creador:</strong> <span id="car-creator"></span></p>
+            <p><strong>Fecha de creacion:</strong> <span id="car-year"></span></p>
+            <p><strong>Velocidad maxima:</strong> <span id="car-speed"></span></p>
+            <p><strong>Precio:</strong> <span id="car-price"></span></p>
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function showCarInfo(name, creator, year, speed, price) {
+            document.getElementById("car-name").textContent = name;
+            document.getElementById("car-creator").textContent = creator;
+            document.getElementById("car-year").textContent = year;
+            document.getElementById("car-speed").textContent = speed;
+            document.getElementById("car-price").textContent = price;
+            document.getElementById("car-info").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("car-info").style.display = "none";
+        }
+    </script>
+</body>
+</html>
